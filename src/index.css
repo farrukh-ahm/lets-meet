@@ -1,13 +1,24 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+main {
+  min-height: 80vh;
+}
+.dropdown-toggle::after {
+  display: none !important;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.joinButton {
+  margin: 20px 0;
+  width: 45%;
+  height: 45px;
+  font-size: 18px;
+  border: none;
+  color: white;
+  border-radius: 12px;
+}
+.joinButton:hover {
+  background-color: rgb(3, 55, 92);
+  font-weight: bold;
+  font-size: 22px;
+  color: rgb(255, 237, 237);
 }
