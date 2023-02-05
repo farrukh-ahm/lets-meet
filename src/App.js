@@ -11,7 +11,7 @@ import MyEventScreen from "./screens/MyEventScreen";
 import NewEventScreen from "./screens/NewEventScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import RegisterScreen from "./screens/RegisterScreen";
-// import './redux/axiosDefaults'
+import './redux/axiosDefaults'
 
 
 function App() {

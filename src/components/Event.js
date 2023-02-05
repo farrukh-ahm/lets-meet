@@ -33,9 +33,14 @@ export default function Event({ event, leave }) {
   };
   const joinButton = (e) => {
     e.preventDefault();
-    dispatch(fetchEventAction(_id));
-    navigate("/myevent");
+    if (userInfo){
+      dispatch(fetchEventAction(_id));
+      navigate("/myevent");
+    } else {
+      alert("Please Log In To Join");
+    }  
   };
+
   if (username === current_user) {
     extraaction = (
       <Row>
@@ -60,7 +65,7 @@ export default function Event({ event, leave }) {
             variant="outline-danger"
             onClick={deleteAction}
           >
-            DELETE
+            Delete
           </Button>
         </Col>
       </Row>
@@ -118,7 +123,7 @@ export default function Event({ event, leave }) {
             variant="outline-info"
             onClick={joinButton}
           >
-            Apply For Join
+            Join
           </Button>
         )}
         {extraaction}
