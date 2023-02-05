@@ -50,7 +50,7 @@ function Header() {
               </LinkContainer>
               {userInfo && (
                 <LinkContainer to="/myevent">
-                  <Nav.Link>Joined</Nav.Link>
+                  <Nav.Link>Meets</Nav.Link>
                 </LinkContainer>
               )}
             </Nav>

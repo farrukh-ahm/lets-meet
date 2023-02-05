@@ -3,6 +3,7 @@ import { Button, Col, Form, Image, NavDropdown, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import fetchEventOpinionDelete from "../redux/thunk/fetchEventOpinionDelete";
 import fetchEventOpinionEdit from "../redux/thunk/fetchEventOpinionEdit";
+
 function Opinion({ opinion }) {
   const [opinionText, SetOpinionText] = useState(opinion.opinion);
   const [editBtn, SetEditBtn] = useState(false);

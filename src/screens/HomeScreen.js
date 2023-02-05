@@ -14,10 +14,13 @@ function HomeScreen() {
   const eventList = useSelector((state) => state.eventList);
   const { events: allevents, loading: allLoading } = eventList;
   const authEventList = useSelector((state) => state.authEventList);
-  const { events: authevents, loading: authLoading } = authEventList;
+  const { events: authevents, loading: authLoading } = authEventList
+    ? authEventList
+    : "";
 
   let loading = userInfo ? authLoading : allLoading;
   let events = userInfo ? authevents : allevents;
+
   useEffect(() => {
     if (userInfo) {
       disptach(fetchAuthEventList);
@@ -26,6 +29,7 @@ function HomeScreen() {
     }
     // setEvents(events);
   }, [disptach, userInfo]);
+  
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>

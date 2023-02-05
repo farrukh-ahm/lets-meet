@@ -126,7 +126,7 @@ function ProfileScreen() {
         <br />
         <br />
         <Col sm={12} md={12} lg={8} xl={8}>
-          <h1>My Created Event</h1>
+          <h1>My Created Events</h1>
           <Row>
             {events &&
               events.map((myevent) => (

@@ -68,7 +68,10 @@ function EventScreen() {
             textAlign: "center",
           }}
         >
-          <pre>Tags : {tags && tags.map((tag) => <span>{tag} , </span>)}</pre>
+          <pre>
+            Tags: {" "}
+            {tags && tags.map((tag) => <span key={tag.id}>{tag} , </span>)}
+          </pre>
         </Col>
       </Row>
       <br />
@@ -84,7 +87,7 @@ function EventScreen() {
                 style={{ background: "rgb(45, 119, 203)" }}
                 onClick={actionHandle}
               >
-                Click Join / Leave
+                Join/Leave
               </button>
             ) : (
               <button
@@ -92,7 +95,7 @@ function EventScreen() {
                 style={{ background: "red", color: "white" }}
                 onClick={actionHandle}
               >
-                Click For Rejoin
+                Rejoin
               </button>
             )
           ) : (
@@ -115,7 +118,7 @@ function EventScreen() {
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <h4>Author : {author && author.name}</h4>
         <pre>
-          Going :
+          Joining :
           <Link to={`/event/member/${_id}`} style={{ textDecoration: "none" }}>
             {members_count} Person
           </Link>

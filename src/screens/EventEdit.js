@@ -60,7 +60,7 @@ function EventEdit() {
           <Form.Label>Title</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter Title Name"
+            placeholder="Enter Title"
             value={editTitle}
             onChange={(e) => setTitle(e.target.value)}
           ></Form.Control>
@@ -79,16 +79,16 @@ function EventEdit() {
           <Form.Control
             as="textarea"
             rows="5"
-            placeholder="Enter Your Full Details"
+            placeholder="Enter Details"
             value={editDetails}
             onChange={(e) => setDetails(e.target.value)}
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId="deadline">
-          <Form.Label>Select Your Deadline</Form.Label>
+          <Form.Label>Select Meet Date</Form.Label>
           <Form.Control
             type="date"
-            placeholder="Dua Date"
+            placeholder="Due Date"
             value={editDeadline}
             onChange={(e) => setDeadline(e.target.value)}
           ></Form.Control>
