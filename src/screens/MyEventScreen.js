@@ -21,6 +21,29 @@ function MyEventScreen() {
       navigate("/");
     }
   }, [userInfo, dispatch, navigate]);
+
+  let content = [];
+  if(events?.length > 0){
+    content = 
+      events &&
+      events.map((myevent) => (
+        <Col key={myevent._id} sm={12} md={6} lg={4} xl={4}>
+          <Event event={myevent} />
+        </Col>
+      ))
+  }
+
+  if(events?.length === 0){
+    content = (
+      <Col sm={12} md={6} lg={4} xl={4} style={{ color: "red" }}>
+        Empty Event{" "}
+        <span style={{ fontWeight: "bold", textTransform: "uppercase" }}>
+          ( You Haven't Joined Any Event)
+        </span>
+      </Col>
+    )
+  }
+
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -42,12 +65,7 @@ function MyEventScreen() {
       </div>
       <br />
       <Row>
-        {events &&
-          events.map((myevent) => (
-            <Col key={myevent._id} sm={12} md={6} lg={4} xl={4}>
-              <Event event={myevent} />
-            </Col>
-          ))}
+        {content}
       </Row>
     </div>
   );

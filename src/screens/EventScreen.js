@@ -70,7 +70,8 @@ function EventScreen() {
         >
           <pre>
             Tags: {" "}
-            {tags && tags.map((tag) => <span key={tag.id}>{tag} , </span>)}
+            {tags &&
+              tags.map((tag, index) => <span key={index}>{tag} , </span>)}
           </pre>
         </Col>
       </Row>
@@ -107,10 +108,10 @@ function EventScreen() {
       <hr />
       <Row style={{ textAlign: "center" }}>
         <Col sm={6} md={6} lg={6} xl={6}>
-          Create At : {create_at}
+          Created On : {create_at}
         </Col>
         <Col sm={6} md={6} lg={6} xl={6} style={{ color: "red" }}>
-          Deadline : {deadline}
+          Meet Date : {deadline}
         </Col>
       </Row>
       <br />
