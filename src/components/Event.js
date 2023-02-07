@@ -83,25 +83,42 @@ export default function Event({ event }) {
     );
   }
 
-  if(member_name?.includes(userInfo.username)){
-    joining = (
-      <Row>
-        <Col sm={12} md={6} lg={6} xl={6}>
-          <div style={{ margin: "20px 0" }}>
-            <Link
-              to={`/event/${_id}`}
-            >
-              <Button
-                className={styles.JoinBtn}
-                size="sm"
+  if(userInfo){
+    if(member_name?.includes(userInfo.username)){
+      joining = (
+        <Row>
+          <Col sm={12} md={6} lg={6} xl={6}>
+            <div style={{ margin: "20px 0" }}>
+              <Link
+                to={`/event/${_id}`}
               >
-                Joined
-              </Button>
-            </Link>
-          </div>
-        </Col>
-      </Row>
-    )
+                <Button
+                  className={styles.JoinBtn}
+                  size="sm"
+                >
+                  Joined
+                </Button>
+              </Link>
+            </div>
+          </Col>
+        </Row>
+      )
+    }else{
+      joining = (
+        <Row>
+          <Col sm={12} md={6} lg={6} xl={6}>
+          <Button
+              type="button"
+              className={join? styles.DeleteBtn : styles.JoinBtn}
+              onClick={join ? leaveButton : joinButton}
+            >
+              {join ? "Leave" : "Join"}
+            </Button>
+          </Col>
+        </Row>
+      )
+    }
+  
   }else{
     joining = (
       <Row>
@@ -117,7 +134,7 @@ export default function Event({ event }) {
       </Row>
     )
   }
-
+  
   useEffect(()=>{
     if(userInfo){
       setJoin(member_name?.includes(userInfo.username));
