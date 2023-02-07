@@ -4,9 +4,51 @@
     background-color: #482c00 !important;
     border: 1px solid #482c00 !important;
     border-radius: 5px;
-    transition: background-color .3s ease-in !important;
+    transition: background-color .3s ease-out !important;
   }
 
 .Button:hover{
+    background-color: transparent !important;
+}
+
+
+.JoinBtn {
+    font-size: 0.8rem;
+    color: #4e4637 !important;
+    background-color: #61DCF5 !important;
+    border: 1px solid #61DCF5 !important;
+    border-radius: 5px;
+    transition: background-color .3s ease-out !important;
+}
+
+.JoinBtn:hover{
+    background-color: transparent !important;
+}
+
+
+.EditBtn {
+    font-size: 0.8rem;
+    color: #4e4637 !important;
+    background-color: #59F099 !important;
+    border: 1px solid #59F099 !important;
+    border-radius: 5px;
+    transition: background-color .3s ease-out !important;
+}
+
+.EditBtn:hover{
+    background-color: transparent !important;
+}
+
+
+.DeleteBtn {
+    font-size: 0.8rem;
+    color: #4e4637 !important;
+    background-color: #DB5E31 !important;
+    border: 1px solid #DB5E31 !important;
+    border-radius: 5px;
+    transition: background-color .3s ease-out !important;
+}
+
+.DeleteBtn:hover{
     background-color: transparent !important;
 }

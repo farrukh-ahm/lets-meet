@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import fetchEventAction from "../redux/thunk/fetchEventAction";
 import fetchEventDelete from "../redux/thunk/fetchEventDelete";
+import styles from "../Styles/Buttons.module.css"
+import head from "../Styles/Heads.module.css"
 
 export default function Event({ event }) {
   const navigate = useNavigate();
@@ -59,32 +61,25 @@ export default function Event({ event }) {
 
   if (username === current_user) {
     extraaction = (
-      <Row>
-        <Col sm={12} md={6} lg={6} xl={6}>
-          <div style={{ margin: "20px 0" }}>
+      <div className="d-flex gap-2">
             <Link
               to={`/event/edit/${_id}`}
-              style={{
-                padding: "12px 40px",
-                border: "1px solid blue",
-                textDecoration: "none",
-              }}
             >
-              Edit
+              <Button
+                className={styles.EditBtn}
+                size="sm"
+                >
+                  Edit
+                </Button>
             </Link>
-          </div>
-        </Col>
-        <Col sm={12} md={6} lg={6} xl={6}>
           <Button
-            type="button"
-            className="btn btn-block my-1 "
-            variant="outline-danger"
+            className={styles.DeleteBtn}
+            size="sm"
             onClick={deleteAction}
           >
             Delete
           </Button>
-        </Col>
-      </Row>
+      </div>
     );
   }
 
@@ -95,13 +90,13 @@ export default function Event({ event }) {
           <div style={{ margin: "20px 0" }}>
             <Link
               to={`/event/${_id}`}
-              style={{
-                padding: "12px 40px",
-                border: "1px solid blue",
-                textDecoration: "none",
-              }}
             >
-              Joined
+              <Button
+                className={styles.JoinBtn}
+                size="sm"
+              >
+                Joined
+              </Button>
             </Link>
           </div>
         </Col>
@@ -113,8 +108,7 @@ export default function Event({ event }) {
         <Col sm={12} md={6} lg={6} xl={6}>
         <Button
             type="button"
-            className="btn btn-block my-1 "
-            variant={join ? "outline-danger" : "outline-info"}
+            className={join? styles.DeleteBtn : styles.JoinBtn}
             onClick={join ? leaveButton : joinButton}
           >
             {join ? "Leave" : "Join"}
@@ -150,7 +144,7 @@ export default function Event({ event }) {
           }}
         >
           <Card.Title as="div">
-            <strong style={{ fontSize: "26px" }}>{title}</strong>
+            <h3 className={head.Heads}>{title}</h3>
           </Card.Title>
         </Link>
         <Card.Text as="div">

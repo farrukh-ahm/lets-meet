@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Event from "../components/Event";
 import Loading from "../components/Loading";
 import fetchEventList from "../redux/thunk/fetchEventList";
+import css from "../Styles/Heads.module.css"
 
 function HomeScreen() {
   const dispatch = useDispatch();
@@ -23,13 +24,16 @@ function HomeScreen() {
   
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <h1>Events</h1>
+      <div className="d-flex justify-content-center">
+        <h2 className={css.Heads}>Events</h2>
+      </div>
+      <div className="d-flex justify-content-center">
         {userInfo && (
           <Link
             to="/newevent"
+            style={{textDecoration: "none"}}
           >
-            <i class="fas fa-plus-circle"></i>Create New Event
+            <i class="fas fa-plus-circle" style={{fontSize: "1rem", color: "#f0c159"}}></i> New Event
           </Link>
         )}
       </div>
