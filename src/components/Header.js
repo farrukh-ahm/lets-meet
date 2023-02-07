@@ -6,12 +6,16 @@ import {
   Nav,
   Navbar,
   NavDropdown,
+  Row,
+  Col
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import fetchUserDetails from "../redux/thunk/fetchUserProfileDetails";
 import { logout } from "../redux/user/actions";
+import styles from "../Styles/Buttons.module.css";
+import css from "../Styles/NavBar.module.css";
 
 function Header() {
   const dispatch = useDispatch();
@@ -34,12 +38,13 @@ function Header() {
 
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+      <Navbar className={css.NavBar} expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>Let's Meet</Navbar.Brand>
+            <Navbar.Brand><h1 className={css.heading}>Let's Meet</h1></Navbar.Brand>
           </LinkContainer>
-          <Navbar.Collapse id="navbarScroll">
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
             <Nav
               className="me-auto my-2 my-lg-0"
               style={{ maxHeight: "100px" }}
@@ -55,20 +60,26 @@ function Header() {
               )}
             </Nav>
             <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-4"
-                aria-label="Search"
-              />
-              <Button variant="outline-success">Search</Button>
+              <Row>
+                <Col xs="auto">
+                  <Form.Control
+                    type="search"
+                    placeholder="Search"
+                    className="me-4"
+                    aria-label="Search"
+                    size="sm"
+                    row={3}
+                  />
+                </Col>
+                <Col xs="auto">
+                  <Button className={styles.Button} size="sm">Search</Button>
+                </Col>
+              </Row>
             </Form>
-          </Navbar.Collapse>
-
-          <div
+            <div
             style={{ display: "flex", alignItems: "center", marginTop: "5px" }}
           >
-            <Navbar.Toggle aria-controls="navbarScroll" />
+            {/* <Navbar.Toggle aria-controls="navbarScroll" /> */}
 
             {userInfo ? (
               <NavDropdown
@@ -86,6 +97,7 @@ function Header() {
                     />
                   </div>
                 }
+                className={css.profileImage}
                 id="navbarScrollingDropdown"
               >
                 <NavDropdown.Item href="#action3">
@@ -112,6 +124,7 @@ function Header() {
               </Nav>
             )}
           </div>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </header>

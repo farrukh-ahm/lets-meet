@@ -1,0 +1,12 @@
+.Button {
+    font-size: 0.8rem;
+    align-self: center;
+    background-color: #482c00 !important;
+    border: 1px solid #482c00 !important;
+    border-radius: 5px;
+    transition: background-color .3s ease-in !important;
+  }
+
+.Button:hover{
+    background-color: transparent !important;
+}

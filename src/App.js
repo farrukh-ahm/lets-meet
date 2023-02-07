@@ -11,12 +11,13 @@ import MyEventScreen from "./screens/MyEventScreen";
 import NewEventScreen from "./screens/NewEventScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import styles from "./App.module.css"
 import './redux/axiosDefaults'
 
 
 function App() {
   return (
-    <div className="App">
+    <div className={styles.App}>
       <Header />
       <main className="py-3">
         <Container>
