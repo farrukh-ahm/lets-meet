@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -30,9 +30,10 @@ export default function Event({ event }) {
   const { name, username } = author ? author : "";
   const current_user = userInfo ? userInfo.username : "";
   let extraaction;
+  let joining;
   const deleteAction = (e) => {
     e.preventDefault();
-    if (window.confirm("Are you sure you want to delete this Opinion?")) {
+    if (window.confirm("Are you sure you want to delete this Meet?")) {
       dispatch(fetchEventDelete(id));
     }
   };
@@ -85,6 +86,42 @@ export default function Event({ event }) {
         </Col>
       </Row>
     );
+  }
+
+  if(member_name?.includes(userInfo.username)){
+    joining = (
+      <Row>
+        <Col sm={12} md={6} lg={6} xl={6}>
+          <div style={{ margin: "20px 0" }}>
+            <Link
+              to={`/event/${_id}`}
+              style={{
+                padding: "12px 40px",
+                border: "1px solid blue",
+                textDecoration: "none",
+              }}
+            >
+              Joined
+            </Link>
+          </div>
+        </Col>
+      </Row>
+    )
+  }else{
+    joining = (
+      <Row>
+        <Col sm={12} md={6} lg={6} xl={6}>
+        <Button
+            type="button"
+            className="btn btn-block my-1 "
+            variant={join ? "outline-danger" : "outline-info"}
+            onClick={join ? leaveButton : joinButton}
+          >
+            {join ? "Leave" : "Join"}
+          </Button>
+        </Col>
+      </Row>
+    )
   }
 
   useEffect(()=>{
@@ -143,14 +180,8 @@ export default function Event({ event }) {
             </Link>
           </p>
         </div>
-          <Button
-            type="button"
-            className="btn btn-block my-1 "
-            variant={join ? "outline-danger" : "outline-info"}
-            onClick={join ? leaveButton : joinButton}
-          >
-            {join ? "Leave" : "Join"}
-          </Button>
+          {!extrawork && joining }
+          
         {extrawork && extraaction}
       </Card.Footer>
     </Card>
