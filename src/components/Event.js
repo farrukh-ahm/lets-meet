@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import fetchEventAction from "../redux/thunk/fetchEventAction";
 import fetchEventDelete from "../redux/thunk/fetchEventDelete";
 
-export default function Event({ event, leave }) {
+export default function Event({ event }) {
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  const [join, setJoin] = useState(false);
+  const [extrawork, setExtrawork] = useState(true);
 
   const {
     author,
@@ -18,8 +20,11 @@ export default function Event({ event, leave }) {
     description,
     create_at,
     deadline,
+    members,
     members_count,
   } = event;
+
+  let member_name = members?.map((member) => member.username);
   let id = _id ? _id : "";
   const dispatch = useDispatch();
   const { name, username } = author ? author : "";
@@ -40,6 +45,16 @@ export default function Event({ event, leave }) {
       alert("Please Log In To Join");
     }  
   };
+
+  const leaveButton = (e) => {
+    e.preventDefault();
+    if (userInfo){
+      dispatch(fetchEventAction(_id));
+      navigate("/")
+    }else{
+      alert("Not Authorized");
+    }
+  }
 
   if (username === current_user) {
     extraaction = (
@@ -71,6 +86,18 @@ export default function Event({ event, leave }) {
       </Row>
     );
   }
+
+  useEffect(()=>{
+    if(userInfo){
+      setJoin(member_name?.includes(userInfo.username));
+      let path = window.location.pathname;
+      if(path==="/"){
+        setExtrawork(false)
+      }else{
+        setExtrawork(true)
+      }
+    }
+  }, [userInfo, setJoin, member_name, setExtrawork])
 
   return (
     <Card className="my-3 p-3 rounded">
@@ -107,7 +134,7 @@ export default function Event({ event, leave }) {
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <p>Author: {name}</p>
           <p>
-            Going:{" "}
+            Joining:{" "}
             <Link
               to={`/event/member/${_id}`}
               style={{ textDecoration: "none" }}
@@ -116,17 +143,15 @@ export default function Event({ event, leave }) {
             </Link>
           </p>
         </div>
-        {leave && (
           <Button
             type="button"
             className="btn btn-block my-1 "
-            variant="outline-info"
-            onClick={joinButton}
+            variant={join ? "outline-danger" : "outline-info"}
+            onClick={join ? leaveButton : joinButton}
           >
-            Join
+            {join ? "Leave" : "Join"}
           </Button>
-        )}
-        {extraaction}
+        {extrawork && extraaction}
       </Card.Footer>
     </Card>
   );
