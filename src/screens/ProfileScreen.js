@@ -14,6 +14,8 @@ import fetchUpdateUserProfile from "../redux/thunk/fetchUserProfileUpdate";
 import heads from "../Styles/Heads.module.css"
 import btn from "../Styles/Buttons.module.css"
 
+
+// Handles and Enables Editing the Profile Page
 function ProfileScreen() {
   const navigate = useNavigate();
   const [upload, setUpload] = useState(false);
@@ -34,6 +36,7 @@ function ProfileScreen() {
   const { success } = eventDelate;
 
 
+  // Check whether user is authorised
   useEffect(() => {
     if (userInfo) {
       dispatch(fetchUserDetails);
@@ -67,15 +70,21 @@ function ProfileScreen() {
       setUploading(false);
     }
   };
+
+  // Editing the profile page
   const editHandleing = (e) => {
     e.preventDefault();
     dispatch(fetchUpdateUserProfile(editFirstname, editLastname));
     setEdit(false);
   };
+
+  // Enables the editing feature
   const editOpening = (e) => {
     e.preventDefault();
     setEdit(true);
   };
+
+  // Passing the Values for the Edit Page
   const passValue = (first_name, last_name) => {
     setEditFirstname(first_name);
     setEditLastname(last_name);
@@ -160,9 +169,13 @@ function ProfileScreen() {
       </Row>
         <br />
         <br />
+        <hr />
     <Row>
-      <Col className="d-flex justify-content-center">
-        <h4 style={{textTransform: "capitalize"}}>My Created Events:</h4>
+      <Row>
+        <Col className="d-flex justify-content-center">
+          <h4 style={{textTransform: "capitalize"}}>My Created Events:</h4>
+        </Col>
+      </Row>
         <Row>
           {events &&
             events.map((myevent) => (
@@ -171,7 +184,6 @@ function ProfileScreen() {
               </Col>
             ))}
         </Row>
-      </Col>
     </Row>
     <br />
     <br />

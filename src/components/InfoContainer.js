@@ -1,5 +1,6 @@
 import React from "react";
 
+// Stylize and manages the user info card
 export default function InfoContainer({ title, value, transform }) {
   return (
     <div

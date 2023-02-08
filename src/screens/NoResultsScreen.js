@@ -1,9 +1,10 @@
 import React from "react";
 import { Container, Image } from 'react-bootstrap';
-import notfound from '../notFound.jpg';
+import notfound from '../assets/notFound.jpg';
 import heads from '../Styles/Heads.module.css';
 import styles from '../Styles/Notfound.module.css'
 
+// 404 Not found
 function NotFound() {
     return (
       <Container>

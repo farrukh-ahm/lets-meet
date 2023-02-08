@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import fetchEventDetails from "../redux/thunk/fetchEventDetails";
 import heads from "../Styles/Heads.module.css"
 
+// Handles all the members attending a meet
 function MemberScreen() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -14,6 +15,8 @@ function MemberScreen() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   console.log(userInfo);
+
+  // Authenticates the user. If not logged-in, redirects to homepage
   useEffect(() => {
     if (!userInfo) {
       navigate("/");

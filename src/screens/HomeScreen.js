@@ -7,6 +7,8 @@ import Loading from "../components/Loading";
 import fetchEventList from "../redux/thunk/fetchEventList";
 import css from "../Styles/Heads.module.css"
 
+
+// Handles the display of the Home Page
 function HomeScreen() {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
@@ -14,10 +16,8 @@ function HomeScreen() {
   const eventList = useSelector((state) => state.eventList);
   const {events, loading} = eventList || [];
   let path = window.location.pathname;
-  if(path==="/") {
-    console.log("Not");
-  }
 
+  // Fetches all the events
   useEffect(()=>{
     dispatch(fetchEventList);
   }, [dispatch]);

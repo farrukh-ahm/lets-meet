@@ -10,6 +10,8 @@ import styles from "../Styles/Heads.module.css"
 import css from "../Styles/EventScreen.module.css"
 import btn from "../Styles/Buttons.module.css"
 
+
+// Handles the display of the Event-Detail page
 function EventScreen() {
   const { id } = useParams();
   let navigate = useNavigate();
@@ -29,16 +31,21 @@ function EventScreen() {
   const eventOpinionEdit = useSelector((state) => state.eventOpinionEdit);
   const { success: updateSuccess } = eventOpinionEdit && eventOpinionEdit;
 
+
+  // Handle the submission of the opinion
   const submitOpinion = (e) => {
     e.preventDefault();
     dispatch(fetchEventOpinionCreate(id, opinionText));
   };
+
+  // Handles all the user actions
   const actionHandle = (e) => {
     e.preventDefault();
     dispatch(fetchEventAction(id));
     setJoin((toggle) => !toggle);
     navigate("/");
   };
+  
   useEffect(() => {
     dispatch(fetchEventDetails(id));
   }, [id, dispatch, success, deleteSuccess, updateSuccess]);

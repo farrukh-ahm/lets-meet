@@ -7,6 +7,9 @@ import fetchEventDelete from "../redux/thunk/fetchEventDelete";
 import styles from "../Styles/Buttons.module.css"
 import head from "../Styles/Heads.module.css"
 
+
+// Fetches the Event information, to be displayed on homepage, my-events page, and EventScreen
+
 export default function Event({ event }) {
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
@@ -26,6 +29,8 @@ export default function Event({ event }) {
     members_count,
   } = event;
 
+
+  // Get all members joining a Meet
   let member_name = members?.map((member) => member.username);
   let id = _id ? _id : "";
   const dispatch = useDispatch();
@@ -33,12 +38,16 @@ export default function Event({ event }) {
   const current_user = userInfo ? userInfo.username : "";
   let extraaction;
   let joining;
+
+  // Meet Delete Handler for the Author
   const deleteAction = (e) => {
     e.preventDefault();
     if (window.confirm("Are you sure you want to delete this Meet?")) {
       dispatch(fetchEventDelete(id));
     }
   };
+
+  // Joining Handler
   const joinButton = (e) => {
     e.preventDefault();
     if (userInfo){
@@ -49,6 +58,7 @@ export default function Event({ event }) {
     }  
   };
 
+  // Leaving a meet Handler
   const leaveButton = (e) => {
     e.preventDefault();
     if (userInfo){
@@ -59,6 +69,7 @@ export default function Event({ event }) {
     }
   }
 
+  // Checks if the user is the author and provides extra options
   if (username === current_user) {
     extraaction = (
       <div className="d-flex gap-2">
@@ -83,6 +94,7 @@ export default function Event({ event }) {
     );
   }
 
+  // Checks if user is attending the meet and displays buttons accordingly
   if(userInfo){
     if(member_name?.includes(userInfo.username)){
       joining = (
@@ -135,6 +147,7 @@ export default function Event({ event }) {
     )
   }
   
+  // ExtraWork handler for homepage and other event pages
   useEffect(()=>{
     if(userInfo){
       setJoin(member_name?.includes(userInfo.username));

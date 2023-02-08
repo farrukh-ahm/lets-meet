@@ -34,6 +34,7 @@ function Opinion({ opinion }) {
   };
 
   
+  // Check if the user is the author of the opinion
   useEffect(()=>{
     if(userInfo){
       if(userInfo.username === opinion.opioner){
@@ -63,6 +64,7 @@ function Opinion({ opinion }) {
               <p style={{ fontSize: "8px" }}>{dateString}</p>
             </div>
             <div>
+              {/* Provide option to edit and delete an opinion to the opinioner */}
               {showOption && 
                 <NavDropdown
                   title={

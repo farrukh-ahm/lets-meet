@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "../Styles/Loading.module.css";
 
+// Loading Animation
+
 export default function Loading() {
   return (
     <div className={styles.container}>

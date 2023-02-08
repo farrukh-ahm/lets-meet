@@ -5,6 +5,8 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import fetchEventDetails from "../redux/thunk/fetchEventDetails";
 import fetchEventUpdate from "../redux/thunk/fetchEventUpdate";
 
+
+// Component to handle the Editing of an Event by Author
 function EventEdit() {
   const { id } = useParams();
   const navigate = useNavigate();

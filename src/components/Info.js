@@ -1,6 +1,8 @@
 import React from "react";
 import InfoContainer from "./InfoContainer";
 
+
+// Component to handle and display user info in neater way
 function Info({ user, name }) {
   const { email, phone_number, event_count } = user;
   return (

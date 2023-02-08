@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+
+// Page for editing user information
+
 export default function Edit({ passValue }) {
   const [first_name, setFirst_name] = useState("");
   const [last_name, setLast_name] = useState("");

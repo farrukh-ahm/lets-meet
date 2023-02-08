@@ -4,7 +4,10 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "../components/Loading";
+import btn from '../Styles/Buttons.module.css'
 
+
+// Handles Creation of a New Meet
 function NewEventScreen() {
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
@@ -22,6 +25,8 @@ function NewEventScreen() {
     formData.append("event_file", file);
     setFormData(formData);
   };
+
+  // Check if user logged in or not
   useEffect(() => {
     if (!userInfo) {
       navigate("/");
@@ -52,6 +57,7 @@ function NewEventScreen() {
 
     navigate("/");
   };
+
   return (
     <Container>
       <Row>
@@ -73,6 +79,8 @@ function NewEventScreen() {
         </Col>
       </Row>
       <hr />
+
+      {/* Form for the new event */}
       <Form onSubmit={postSubmitHandler}>
         <Form.Group controlId="title">
           <Form.Label>Title</Form.Label>
@@ -85,7 +93,6 @@ function NewEventScreen() {
         </Form.Group>
         <Form.Group controlId="image">
           <Form.Label>Image</Form.Label>
-          {/* <p style={{ fontSize: "5", color: "gray" }}>{image}</p> */}
           {uploading && <Loading />}
           <Form.Control type="file" onChange={uploadFileHandler} custom />
         </Form.Group>
@@ -127,7 +134,7 @@ function NewEventScreen() {
           ></Form.Control>
         </Form.Group>
         <br />
-        <Button type="submit" variant="primary">
+        <Button type="submit" className={btn.EditBtn}>
           Submit
         </Button>
       </Form>

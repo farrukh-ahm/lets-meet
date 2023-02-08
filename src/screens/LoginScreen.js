@@ -6,6 +6,8 @@ import Loading from "../components/Loading";
 import Message from "../components/Message";
 import fetchUserLogin from "../redux/thunk/fetchUserLogin";
 
+
+// Handles and authenticates all login attempts
 function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,7 +60,7 @@ function LoginScreen() {
           </Form>
           <Row className="py-3">
             <Col>
-              New Customer ?{" "}
+              New User?{" "}
               <Link
                 to={redirect ? `/register?redirect=${redirect}` : "/register"}
               >

@@ -6,19 +6,3 @@ main {
 .dropdown-toggle::after {
   display: none !important;
 }
-
-.joinButton {
-  margin: 20px 0;
-  width: 45%;
-  height: 45px;
-  font-size: 18px;
-  border: none;
-  color: white;
-  border-radius: 12px;
-}
-.joinButton:hover {
-  background-color: rgb(3, 55, 92);
-  font-weight: bold;
-  font-size: 22px;
-  color: rgb(255, 237, 237);
-}

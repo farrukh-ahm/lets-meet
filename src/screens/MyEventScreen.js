@@ -6,6 +6,8 @@ import Event from "../components/Event";
 import fetchMyEventList from "../redux/thunk/fetchMyEventList";
 import css from "../Styles/Heads.module.css";
 
+
+// Handles and fetches all the events created and joined by the user
 function MyEventScreen() {
   let navigate = useNavigate();
   const dispatch = useDispatch();
@@ -15,6 +17,7 @@ function MyEventScreen() {
   const myEventList = useSelector((state) => state.myEventList);
   const { events } = myEventList ? myEventList : "";
 
+  // If user is not logged in, redirects them to the homepage
   useEffect(() => {
     if (userInfo) {
       dispatch(fetchMyEventList);
@@ -23,6 +26,7 @@ function MyEventScreen() {
     }
   }, [userInfo, dispatch, navigate]);
 
+  // Checks if a person has created or joined any meet yet
   let content = [];
   if(events?.length > 0){
     content = 

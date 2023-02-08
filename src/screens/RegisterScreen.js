@@ -6,6 +6,8 @@ import Loading from "../components/Loading";
 import Message from "../components/Message";
 import fetchUserRegister from "../redux/thunk/fetchUserRegister";
 
+
+// Handles new signups
 function RegisterScreen() {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
@@ -20,6 +22,7 @@ function RegisterScreen() {
   const redirect = search ? search.split("=")[1] : "/";
   const userRegister = useSelector((state) => state.userRegister);
   const { error, loading, userInfo } = userRegister;
+
   useEffect(() => {
     if (userInfo) {
       navigate(redirect);
@@ -33,6 +36,7 @@ function RegisterScreen() {
       disptach(fetchUserRegister(fname, lname, email, password, phoneNumber));
     }
   };
+  
   return (
     <Container>
       <Row className="justify-content-md-center">

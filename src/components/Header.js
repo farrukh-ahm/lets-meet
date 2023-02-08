@@ -1,20 +1,15 @@
 import React, { useEffect } from "react";
 import {
-  Button,
   Container,
-  Form,
   Nav,
   Navbar,
   NavDropdown,
-  Row,
-  Col
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import fetchUserDetails from "../redux/thunk/fetchUserProfileDetails";
 import { logout } from "../redux/user/actions";
-import styles from "../Styles/Buttons.module.css";
 import css from "../Styles/NavBar.module.css";
 
 function Header() {
@@ -53,33 +48,18 @@ function Header() {
               <LinkContainer to="/">
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
+              
+              {/* Checks if user is logged in and displays link to their Meets */}
               {userInfo && (
                 <LinkContainer to="/myevent">
                   <Nav.Link>Meets</Nav.Link>
                 </LinkContainer>
               )}
             </Nav>
-            {/* <Form className="d-flex">
-              <Row>
-                <Col xs="auto">
-                  <Form.Control
-                    type="search"
-                    placeholder="Search"
-                    className="me-4"
-                    aria-label="Search"
-                    size="sm"
-                    row={3}
-                  />
-                </Col>
-                <Col xs="auto">
-                  <Button className={styles.Button} size="sm">Search</Button>
-                </Col>
-              </Row>
-            </Form> */}
+
             <div
             style={{ display: "flex", alignItems: "center", marginTop: "5px" }}
           >
-            {/* <Navbar.Toggle aria-controls="navbarScroll" /> */}
 
             {userInfo ? (
               <NavDropdown
