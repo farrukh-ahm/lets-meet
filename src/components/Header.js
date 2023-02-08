@@ -59,7 +59,7 @@ function Header() {
                 </LinkContainer>
               )}
             </Nav>
-            <Form className="d-flex">
+            {/* <Form className="d-flex">
               <Row>
                 <Col xs="auto">
                   <Form.Control
@@ -75,7 +75,7 @@ function Header() {
                   <Button className={styles.Button} size="sm">Search</Button>
                 </Col>
               </Row>
-            </Form>
+            </Form> */}
             <div
             style={{ display: "flex", alignItems: "center", marginTop: "5px" }}
           >
@@ -90,8 +90,8 @@ function Header() {
                       src={user && user.profile_pic}
                       alt="user pic"
                       style={{
-                        width: "50px",
-                        height: "50px",
+                        width: "80px",
+                        height: "80px",
                         borderRadius: "50%",
                       }}
                     />

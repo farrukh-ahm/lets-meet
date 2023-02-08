@@ -11,6 +11,7 @@ import MyEventScreen from "./screens/MyEventScreen";
 import NewEventScreen from "./screens/NewEventScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import NotFound from "./screens/NoResultsScreen";
 import styles from "./App.module.css"
 import './redux/axiosDefaults'
 
@@ -23,30 +24,24 @@ function App() {
         <Container>
           <Routes>
             <Route exact path="/" element={<HomeScreen />} />
-          </Routes>
-          <Routes>
+          
             <Route exact path="/myevent" element={<MyEventScreen />} />
-          </Routes>
-          <Routes>
+          
             <Route exact path="/newevent" element={<NewEventScreen />} />
-          </Routes>
-          <Routes>
+          
             <Route exact path="/event/:id" element={<EventScreen />} />
-          </Routes>
-          <Routes>
+          
             <Route exact path="/event/member/:id" element={<MemberScreen />} />
-          </Routes>
-          <Routes>
+          
             <Route exact path="/event/edit/:id" element={<EventEdit />} />
-          </Routes>
-          <Routes>
+          
             <Route exact path="/login" element={<LoginScreen />} />
-          </Routes>
-          <Routes>
+          
             <Route exact path="/register" element={<RegisterScreen />} />
-          </Routes>
-          <Routes>
+          
             <Route exact path="/profile" element={<ProfileScreen />} />
+          
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Container>
       </main>
