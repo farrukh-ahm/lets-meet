@@ -10,26 +10,9 @@
     block-size: 5em;
 }
 
-@media screen and(min-width: 800px){
-    .Image{
-        inline-size: 50%;
-        block-size: 95%;
-    }
-}
-
-
-
-
 .Adjustment{
     display: flex;
     flex-direction: column;
-}
-
-@media screen and(min-width: 600px){
-    .Adjustment{
-        display: flex;
-        flex-direction: row;
-    }
 }
 
 .Description{
