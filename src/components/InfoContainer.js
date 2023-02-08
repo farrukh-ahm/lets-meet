@@ -5,13 +5,12 @@ export default function InfoContainer({ title, value, transform }) {
     <div
       style={{
         display: "flex",
-        justifyContent: "space-between",
-        textAlign: "center",
-        margin: "40px 10px",
+        gap: "1rem",
+        margin: "25px 0",
       }}
     >
-      <h5 style={{ textTransform: "capitalize" }}>{title}</h5>
-      <h5 style={{ textTransform: transform }}>{value}</h5>
+      <p style={{ textTransform: "capitalize" }}>{title}</p>
+      <p style={{ textTransform: transform }}>{value}</p>
     </div>
   );
 }

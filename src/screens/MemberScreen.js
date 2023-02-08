@@ -3,6 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import fetchEventDetails from "../redux/thunk/fetchEventDetails";
+import heads from "../Styles/Heads.module.css"
 
 function MemberScreen() {
   const { id } = useParams();
@@ -23,22 +24,25 @@ function MemberScreen() {
 
   return (
     <Container>
-      <h1 style={{ textAlign: "center" }}>{title}</h1>
+      <h2 style={{ textAlign: "center" }} className={heads.Heads}>{title}</h2>
       <br />
-      <h2 style={{ textTransform: "lowercase" }}>
-        @{userInfo && userInfo.username}
-      </h2>
       <br />
-      <h2>Member List</h2>
+      <h4 style={{ textTransform: "lowercase" }}>
+        Hello @{userInfo && userInfo.username}
+      </h4>
+      <br />
+      <br />
+      <br />
+      <p>People attending the meet:</p>
       <br />
       <br />
       <Row>
         {members?.map((member, index) => {
           return (
             <Col key={event._id} sm={12} md={12} lg={12} xl={12}>
-              <h3 style={{ padding: "10px 30px" }}>
+              <p style={{ padding: "10px 30px" }}>
                 {index + 1}. {member.name}
-              </h3>
+              </p>
               <hr />
             </Col>
           );

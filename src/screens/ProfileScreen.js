@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Col, Container, Image, Row } from "react-bootstrap";
+import { Button, Col, Container, Image, Row} from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"
 import Edit from "../components/Edit";
 import Event from "../components/Event";
 import Info from "../components/Info";
@@ -10,6 +11,8 @@ import Loading from "../components/Loading";
 import fetchAuthorEventList from "../redux/thunk/fetchAuthorEventList";
 import fetchUserDetails from "../redux/thunk/fetchUserProfileDetails";
 import fetchUpdateUserProfile from "../redux/thunk/fetchUserProfileUpdate";
+import heads from "../Styles/Heads.module.css"
+import btn from "../Styles/Buttons.module.css"
 
 function ProfileScreen() {
   const navigate = useNavigate();
@@ -29,6 +32,8 @@ function ProfileScreen() {
   let name = userInfo && `${userInfo.first_name} ${userInfo.last_name}`;
   const eventDelate = useSelector((state) => state.eventDelate);
   const { success } = eventDelate;
+
+
   useEffect(() => {
     if (userInfo) {
       dispatch(fetchUserDetails);
@@ -76,13 +81,14 @@ function ProfileScreen() {
     setEditLastname(last_name);
   };
 
+
   return (
     <Container>
-      <h1 style={{ textTransform: "lowercase" }}>@{user && user.username}</h1>
+      <h4 className={heads.Heads} style={{ textAlign: "center" }}>Hello @{user && user.username}</h4>
       <br />
       <br />
       <Row>
-        <Col sm={12} md={12} lg={4} xl={4}>
+        <Col className="d-flex justify-content-center">
           <div style={{ margin: "20px auto", textAlign: "center" }}>
             <Image
               src={user && user.profile_pic}
@@ -92,51 +98,85 @@ function ProfileScreen() {
                 borderRadius: "50%",
               }}
             />
-            <div style={{ margin: "20px auto" }}>
-              {uploading && <Loading />}
-              {upload && alert(image)}
-              <label style={{ color: "blue", fontSize: "20px" }}>
-                Change Profile
-              </label>
-              <br />
-              <input
-                type="file"
-                name="profile_pic"
-                id="profile_pic"
-                onChange={uploadFileHandler}
-              />
             </div>
+          </Col>
+      </Row>
+      <Row>
+        <Col className="d-flex justify-content-center">
+          <div style={{ margin: "20px auto" }}>
+            {uploading && <Loading />}
+            {upload && alert(image)}
+          </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col className="d-flex justify-content-center">
+          <div style={{ margin: "20px auto" }}>
             {edit ? (
+              <div style={{ margin: "10px auto" }}>
+                <Row>
+                  <Col className="d-flex justify-content-center" style={{flexDirection: "column"}}>
+                  {uploading && <Loading />}
+                  {upload && alert(image)}
+                  <label style={{ color: "#DB5E31", fontSize: "16px", textAlign: "center"}}>
+                    Change Profile Pic
+                  </label>
+                  <br />
+                  <input
+                    type="file"
+                    name="profile_pic"
+                    id="profile_pic"
+                    onChange={uploadFileHandler}
+                    style={{textAlign: "center"}}
+                  />
+                  </Col>
+                </Row>
               <Edit passValue={passValue} />
+              </div>
             ) : (
               <Info user={user ? user : ""} name={name} />
             )}
 
             {edit ? (
-              <Button variant="success" onClick={editHandleing}>
-                Save
-              </Button>
+              <Row>
+                <Col className="d-flex align-content-start gap-3">
+                <Button className={btn.JoinBtn} onClick={editHandleing}>
+                  Save
+                </Button>
+                <Link to="/" style={{ textDecoration: "none" }}>
+                  <Button className={btn.DeleteBtn}>
+                    Cancel
+                  </Button>
+                </Link>
+                </Col>
+              </Row>
             ) : (
-              <Button variant="info" onClick={editOpening}>
+              <Button className={btn.JoinedBtn} onClick={editOpening}>
                 Edit
               </Button>
             )}
           </div>
         </Col>
-        <br />
-        <br />
-        <Col sm={12} md={12} lg={8} xl={8}>
-          <h1>My Created Events</h1>
-          <Row>
-            {events &&
-              events.map((myevent) => (
-                <Col key={myevent._id} sm={12} md={6} lg={6} xl={6}>
-                  <Event event={myevent} />
-                </Col>
-              ))}
-          </Row>
-        </Col>
       </Row>
+        <br />
+        <br />
+    <Row>
+      <Col className="d-flex justify-content-center">
+        <h4 style={{textTransform: "capitalize"}}>My Created Events:</h4>
+        <Row>
+          {events &&
+            events.map((myevent) => (
+              <Col key={myevent._id} sm={12} md={6} lg={6} xl={6}>
+                <Event event={myevent} />
+              </Col>
+            ))}
+        </Row>
+      </Col>
+    </Row>
+    <br />
+    <br />
+    <br />
+    <br />
     </Container>
   );
 }
