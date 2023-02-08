@@ -28,7 +28,7 @@ function Header() {
   const { first_name, last_name } = userInfo ? userInfo : "";
   const logoutHandler = () => {
     dispatch(logout);
-    navigate("/");
+    navigate("/login");
   };
   useEffect(() => {
     if (userInfo) {

@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+.Image{
+    inline-size: 80%;
+    block-size: 95%;
+}
+
+.customBtn{
+    inline-size: 30em;
+    block-size: 2em;
+}
+
+@media screen and(min-width: 800px){
+    .Image{
+        inline-size: 50%;
+        block-size: 95%;
+    }
+
+    .customBtn{
+        inline-size: 45em;
+        block-size: 5em;
+    }
+}
+
+
+
+
+.Adjustment{
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and(min-width: 600px){
+    .Adjustment{
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+.Description{
+    font-family: 'Merriweather', serif;
+    color: #4e4637;
+    font-size: 18px;
+}
+
+.Border{
+    outline: 1px solid #4e4637;
+    outline-offset: 15px;
+}

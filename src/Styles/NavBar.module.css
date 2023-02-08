@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Righteous&display=swap');
+
 .NavBar{
     background-color: #f0c159;
 }
 
 .heading {
     color: #007664;
+    font-family: 'Dancing Script', cursive
 }
 
 .profileImage{

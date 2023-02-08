@@ -4,11 +4,6 @@
     box-sizing: border-box;
 }
 
-h1,h2,h3,h4,h5,h6{
-    text-transform: uppercase;
-    color: #56a06c;
-}
-
 .App{
     color: #4e4637;
 }

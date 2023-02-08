@@ -90,10 +90,10 @@ export default function Event({ event }) {
           <Col sm={12} md={6} lg={6} xl={6}>
             <div style={{ margin: "20px 0" }}>
               <Link
-                to={`/event/${_id}`}
+                to={`/myevent`}
               >
                 <Button
-                  className={styles.JoinBtn}
+                  className={styles.JoinedBtn}
                   size="sm"
                 >
                   Joined
@@ -110,9 +110,9 @@ export default function Event({ event }) {
           <Button
               type="button"
               className={join? styles.DeleteBtn : styles.JoinBtn}
-              onClick={join ? leaveButton : joinButton}
+              onClick={joinButton}
             >
-              {join ? "Leave" : "Join"}
+              Join
             </Button>
           </Col>
         </Row>

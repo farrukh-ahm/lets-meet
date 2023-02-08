@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Image, NavDropdown, Row } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import fetchEventOpinionDelete from "../redux/thunk/fetchEventOpinionDelete";
 import fetchEventOpinionEdit from "../redux/thunk/fetchEventOpinionEdit";
+import styles from "../Styles/Buttons.module.css"
 
 function Opinion({ opinion }) {
   const [opinionText, SetOpinionText] = useState(opinion.opinion);
@@ -13,6 +14,9 @@ function Opinion({ opinion }) {
   const date = new Date(timestamp);
   const datetime = date && date.toISOString().split("T");
   const dateString = datetime[0];
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  const [showOption, setShowOption] = useState(false);
   const dispatch = useDispatch();
   const deleteButton = (e) => {
     e.preventDefault();
@@ -29,6 +33,16 @@ function Opinion({ opinion }) {
     SetEditBtn((toggle) => !toggle);
   };
 
+  
+  useEffect(()=>{
+    if(userInfo){
+      if(userInfo.username === opinion.opioner){
+        setShowOption(true)
+      }
+    }
+  })
+
+
   return (
     <div>
       <Row>
@@ -43,29 +57,31 @@ function Opinion({ opinion }) {
               style={{ width: "40px", height: "40px", margin: "10px" }}
             />
             <div style={{ margin: "13px", lineHeight: "12px" }}>
-              <p style={{ fontSize: "20px", fontWeight: "bold" }}>
+              <p style={{ fontSize: "15px", color: "#61DCF5" }}>
                 {opinion.opioner_name}
               </p>
-              <p>{dateString}</p>
+              <p style={{ fontSize: "8px" }}>{dateString}</p>
             </div>
             <div>
-              <NavDropdown
-                title={
-                  <div className="mx-3 my-3">
-                    <i class="fa-solid fa-box"></i>Option
-                  </div>
-                }
-                id="navbarScrollingDropdown"
-                style={{ margin: "13px 60px" }}
-              >
-                <NavDropdown.Item href="#action3" onClick={editAction}>
-                  <i class="fa-thin fa-file-pen"></i> Edit
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action4" onClick={deleteButton}>
-                  <i class="fa-solid fa-trash" style={{ color: "red" }}></i>{" "}
-                  Delete
-                </NavDropdown.Item>
-              </NavDropdown>
+              {showOption && 
+                <NavDropdown
+                  title={
+                    <div className="mx-3 my-3">
+                      <i class="fa-solid fa-box"></i>Option
+                    </div>
+                  }
+                  id="navbarScrollingDropdown"
+                  style={{ margin: "13px 60px" }}
+                >
+                  <NavDropdown.Item href="#action3" onClick={editAction}>
+                    <i class="fa-thin fa-file-pen"></i> Edit
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action4" onClick={deleteButton}>
+                    <i class="fa-solid fa-trash" style={{ color: "red" }}></i>{" "}
+                    Delete
+                  </NavDropdown.Item>
+                </NavDropdown>
+              }
             </div>
           </div>
         </Col>
@@ -90,10 +106,11 @@ function Opinion({ opinion }) {
               <Col sm={12} md={6} lg={6} xl={6}>
                 <Button
                   type="submit"
-                  variant="primary"
+                  className={styles.JoinedBtn}
+                  size="sm"
                   onClick={opinionSubmitHandler}
                 >
-                  Edit Confirm
+                  Save
                 </Button>
               </Col>
             </Row>

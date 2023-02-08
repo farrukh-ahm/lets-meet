@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Event from "../components/Event";
 import fetchMyEventList from "../redux/thunk/fetchMyEventList";
+import css from "../Styles/Heads.module.css";
 
 function MyEventScreen() {
   let navigate = useNavigate();
@@ -35,33 +36,37 @@ function MyEventScreen() {
 
   if(events?.length === 0){
     content = (
-      <Col sm={12} md={6} lg={4} xl={4} style={{ color: "red" }}>
-        Empty Event{" "}
-        <span style={{ fontWeight: "bold", textTransform: "uppercase" }}>
-          ( You Haven't Joined Any Event)
-        </span>
-      </Col>
+      <div>
+        <Row>
+          <Col className="d-flex d-flex align-items-center justify-content-center">
+            <h3 className={css.Heads}>Empty Event{" "}</h3>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="d-flex d-flex align-items-center justify-content-center" style={{ color: "red" }}>
+            <p style={{ fontWeight: "bold" }}>
+              ( You Haven't Joined Any Meets Yet!)
+            </p>
+          </Col>
+        </Row>
+      </div>
     )
   }
 
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <h1>My Events</h1>
-        <Link
-          to="/newevent"
-          style={{
-            width: "20%",
-            background: "#1597d3",
-            textDecoration: "none",
-            textAlign: "center",
-            padding: "15px",
-            fontSize: "18px",
-            fontWeight: "bolder",
-          }}
-        >
-          Create New Event
-        </Link>
+      <div className="d-flex justify-content-center">
+        <h2 className={css.Heads}>My Events</h2>
+      </div>
+      <div className="d-flex justify-content-center">
+        {userInfo && (
+          <Link
+            to="/newevent"
+            style={{textDecoration: "none"}}
+          >
+            <i class="fas fa-plus-circle" style={{fontSize: "1rem", color: "#f0c159"}}></i> New Event
+          </Link>
+        )}
       </div>
       <br />
       <Row>

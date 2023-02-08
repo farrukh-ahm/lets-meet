@@ -6,6 +6,9 @@ import Opinion from "../components/Opinion";
 import fetchEventAction from "../redux/thunk/fetchEventAction";
 import fetchEventDetails from "../redux/thunk/fetchEventDetails";
 import fetchEventOpinionCreate from "../redux/thunk/fetchEventOpinionCreate";
+import styles from "../Styles/Heads.module.css"
+import css from "../Styles/EventScreen.module.css"
+import btn from "../Styles/Buttons.module.css"
 
 function EventScreen() {
   const { id } = useParams();
@@ -56,18 +59,12 @@ function EventScreen() {
   return (
     <Container>
       <Row>
-        <Col sm={12} md={12} lg={12} xl={12}>
-          <h1 style={{ textAlign: "center" }}>{title}</h1>
+        <Col className="d-flex justify-content-center">
+          <h1 className={`${styles.Heads} ${styles.Others}`}>{title}</h1>
         </Col>
-        <Col
-          sm={12}
-          md={12}
-          lg={12}
-          xl={12}
-          style={{
-            textAlign: "center",
-          }}
-        >
+      </Row>
+      <Row>
+        <Col className="d-flex justify-content-center">
           <pre>
             Tags: {" "}
             {tags &&
@@ -78,18 +75,17 @@ function EventScreen() {
       <br />
       <Row style={{ textAlign: "center" }}>
         <Col sm={12} md={12} lg={12} xl={12}>
-          <Image src={image} style={{ width: "50%", height: "95%" }} />
+          <Image src={image} className={css.Image} />
         </Col>
-        <Col sm={12} md={12} lg={12} xl={12}>
+        <Col className="d-flex justify-content-center">
           {userInfo ? (
             join ? (
-              <button
-                className="joinButton"
-                style={{ background: "rgb(45, 119, 203)" }}
+              <Button
+                className={`${btn.JoinBtn} ${css.customBtn}`}
                 onClick={actionHandle}
               >
                 Join/Leave
-              </button>
+              </Button>
             ) : (
               <button
                 className="joinButton"
@@ -110,35 +106,27 @@ function EventScreen() {
         <Col sm={6} md={6} lg={6} xl={6}>
           Created On : {create_at}
         </Col>
-        <Col sm={6} md={6} lg={6} xl={6} style={{ color: "red" }}>
+        <Col sm={6} md={6} lg={6} xl={6} style={{ color: "#DB5E31" }}>
           Meet Date : {deadline}
         </Col>
       </Row>
       <br />
       <br />
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <h4>Author : {author && author.name}</h4>
+      <div className={css.Adjustment}>
+        <p style={{ fontWeight: "700" }}>Author : {author && author.name}</p>
         <pre>
           Joining :
           <Link to={`/event/member/${_id}`} style={{ textDecoration: "none" }}>
-            {members_count} Person
+            {members_count} Person/People
           </Link>
         </pre>
       </div>
       <br />
       <br />
       <Row>
-        <Col sm={12} md={12} lg={12} xl={12}>
+        <Col sm={12} md={12} lg={12} xl={12} className={css.Border}>
           {details && (
-            <p
-              style={{
-                fontSize: "14px",
-                fontFamily: "'Roboto', sans-serif",
-                lineHeight: "26px",
-                color: "#666666",
-                fontWeight: "500",
-              }}
-            >
+            <p className={css.Description}>
               {details}
             </p>
           )}
@@ -146,9 +134,11 @@ function EventScreen() {
       </Row>
       <br />
       <br />
+      <hr />
+      <br />
       <Row>
         <Col sm={12} md={12} lg={12} xl={12}>
-          <h3>{opinion_count ? opinion_count : <div></div>} Opinion Here: </h3>
+          <h5 className={styles.Heads}>{opinion_count ? opinion_count : <div></div>} Opinion(s) Here: </h5>
         </Col>
       </Row>
       <br />
@@ -176,7 +166,7 @@ function EventScreen() {
           <Col sm={12} md={12} lg={12} xl={12}>
             <Button
               type="submit"
-              variant="primary"
+              className={btn.JoinedBtn}
               style={{ margin: "15px 0px" }}
               onClick={submitOpinion}
             >
