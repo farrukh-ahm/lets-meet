@@ -7,6 +7,35 @@ You'll never need to do any activity alone if you don't want to! Just Sign-up, b
 
 ![Image of application responsiveness on different devices](./src/assets/read-pics/amiresponsive.JPG)
 
+
+## Table of Content
+ -  [UX/UI](#ux)
+    - [Site Purpose](#purpose])
+    - [Site Objectives](#objectives)
+    - [Target Audience](#audience)
+    - [User Stories](#stories)
+    - [Design](#design)
+        1. [Framework](#framework)
+        1. [Schemas](#schemas)
+        1. [Color](#color)
+        1. [Typography](#typography)
+ - [Features](#features)
+    - [Present Features](#present)
+        1. [Navbar](#nav)
+        1. [Home Page](#home)
+        1. [My Events Page](#my-events)
+        1. [Meet/Events Detail Page](#event-detail)
+        1. [Profile](#profile)
+        1. [New Event/Meet](#new-event)
+        1. [Sign-up/Log-in/Log-out](#sign-in)
+    - [Features to Implement](#future)
+ - [Testing](#testing)
+ - [Technologies and Libraries Used](#tech)
+ - [Deployment](#deployment)
+ - [Acknowledgements and Credits](#credits)
+
+<br><br>
+
 # UX/UI <a name="ux"></a>
 ## Site Purpose <a name="purpose"></a>
 The purpose of this website is to provide a platform for people who have difficulty finding people to join them for some activity or trips, maybe due to their friends not being interested or too busy to be able to join them. The website provides a way for people to find their interest groups, find people who share the same hobbies and interests, and meet new people, expand their social circle. A user can easily post their interests, an upcoming trip or excursion and others can join them as per their convenience and liking.
@@ -209,6 +238,7 @@ In the future, given more time to work on the website, I would like to implement
 <br><br>
 
 
+# Testing <a name="testing"></a>
 ## Manual Testing
 1. Was having issues pushing code from VS Code to GitHub.
     - The api and the app was coded completely on VS Code and pushed to GitHub.
