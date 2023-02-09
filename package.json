@@ -48,5 +48,9 @@
   "engines": {
     "node": "v16.19.0",
     "npm": "8.19.3"
-    }
+  },
+  "devDependencies": {
+    "eslint": "^8.33.0",
+    "eslint-plugin-react": "^7.32.2"
+  }
 }

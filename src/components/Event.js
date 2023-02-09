@@ -187,7 +187,7 @@ export default function Event({ event }) {
             }}
           >
             <p>Created: {create_at}</p>
-            <p style={{ color: "red" }}>Deadline: {deadline}</p>
+            <p style={{ color: "red" }}>Meet Date: {deadline}</p>
           </div>
         </Card.Text>
       </Card.Body>

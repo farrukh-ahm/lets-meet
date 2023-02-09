@@ -15,7 +15,6 @@ function HomeScreen() {
   const { userInfo } = userLogin;
   const eventList = useSelector((state) => state.eventList);
   const {events, loading} = eventList || [];
-  let path = window.location.pathname;
 
   // Fetches all the events
   useEffect(()=>{
